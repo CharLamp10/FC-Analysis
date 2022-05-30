@@ -1,6 +1,6 @@
 %Thesis Project: Classification and Characterization of the Effect of Migraine 
 %through Functional Connectivity Characteristics: Application to EEG 
-%Recordings from a Multimorbid Clinical Sample
+%Recordings from a Multimorbid Clinical Sample.
 
 function [window_flag,window_regions] = window_criterion(window,chan_names,regional_activity_thresh,window_activity_thresh)
 %Window Criterion for evaluating windows of a rhythm based on activity
