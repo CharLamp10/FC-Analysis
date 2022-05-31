@@ -143,7 +143,7 @@ function feature = ConnectivityAnalysis(data, param_struct)
 %              conv_bandsLow   -string array. The names of the given low bands
 %                               e.g ["delta","theta"]
 %              conv_bandsHigh  -string array. The names of the given high bands
-%                               e.g ["lo-gamma","hi-gamma"]
+%                               e.g ["lgamma","hgamma"]
 %              untouched       -double array. limits where the different bandwidths
 %                               will be applied
 %              overlap         -double. Overlap between bands
@@ -272,7 +272,7 @@ if param_struct.feature_name == "coher"
 elseif param_struct.feature_name == "plv"
     str = 'PLV';
     if ~isfield(param_struct,'conv_bands')
-        param_struct.conv_bands = ["delta","theta","alpha","lo_beta","hi_beta","lo_gamma","hi_gamma"];
+        param_struct.conv_bands = ["delta","theta","alpha","lbeta","hbeta","lgamma","hgamma"];
     end
     if ~isfield(param_struct,'st_sig_method')
         param_struct.st_sig_method = "noSurrogate";
@@ -345,7 +345,7 @@ elseif param_struct.feature_name == "pac"
         param_struct.low = {'delta','theta','alpha'};
     end
     if ~isfield(param_struct,'high')
-        param_struct.high = {'hi_beta','lo_gamma','hi_gamma'};
+        param_struct.high = {'hbeta','lgamma','hgamma'};
     end
 end
 

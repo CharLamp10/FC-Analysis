@@ -128,8 +128,6 @@ function [mean_feat,out_names] = cBisCalc(param_struct)
             if ifcond && ~isempty(x{i}) && ~isempty(y{j}) && ~(all(isnan(x{i})) || all(isnan(y{j})))
                 xin = (x{i} - mean(x{i})) / std(x{i}); %Normalize
                 yin = (y{j} - mean(y{j})) / std(y{j});
-                
-                cBic = bicoherx(xin,yin,yin,nfft,wind,nsamp,overlap);
 
                 if ifcondAS
                     [bspecxxy,nrecs] = bispecdx(xin,xin,yin,nfft,wind,nsamp,overlap,0);
