@@ -60,17 +60,6 @@ elseif ismatrix(y)
 end
 
 elec_case = param_struct.regional;
-% sumup = param_struct.sumup;
-% 
-% if sumup == 1 && (elec_case == "single" || elec_case == "intra-regional" || elec_case == "anti-symmetric")
-%     error('Sum up can only be used for inter-regional & left-right')
-% end
-% if sumup == 1
-%     x = sum(cell2mat(x'),2);
-%     y = sum(cell2mat(y'),2);
-%     x = mat2cell(x,length(x),1);
-%     y = mat2cell(y,length(y),1);
-% end
 
 bands = param_struct.bands;
 band_method = param_struct.band_method;

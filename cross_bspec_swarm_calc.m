@@ -60,16 +60,6 @@ elseif ismatrix(b)
 end
 
 elec_type = param_struct.regional;
-% sumup = param_struct.sumup;
-% if sumup == 1 && (elec_type == "single" || elec_type == "intra-regional" || elec_type == "anti-symmetric")
-%     error('Sum up can only be used for inter-regional & left-right')
-% end
-% if sumup == 1
-%     a = sum(cell2mat(a'),2);
-%     b = sum(cell2mat(b'),2);
-%     a = mat2cell(a,length(a),1);
-%     b = mat2cell(b,length(b),1);
-% end
 
 if (elec_type == "single" || elec_type == "intra-regional" || elec_type == "anti-symmetric")
     param_struct.x = a;
