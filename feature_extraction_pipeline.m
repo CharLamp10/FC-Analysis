@@ -1,7 +1,18 @@
+%% Thesis - Charalampos Lamprou 9114 & Ioannis Ziogas 9132 - AUTh ECE
+% Thesis Project: Classification and Characterization of the Effect of Migraine 
+% through Functional Connectivity Characteristics: Application to EEG 
+% Recordings from a Multimorbid Clinical Sample
+
 function [message,varargout] = feature_extraction_pipeline(feature_name,varargin)
 % Receives filepath, feature to calculate and needed input arguments, 
 % loads signals, calculates feature and returns output arguments and 
 % function used (for cross-checking)
+
+%-----------------------------------------------------------------------------------------------------------------
+% Authors: Ioannis Ziogas & Charalampos Lamprou
+% Copyright (C) 2022 Ioannis Ziogas and Charalampos Lamprou,SPBTU,ECE,AUTh
+%-----------------------------------------------------------------------------------------------------------------
+
 
 available_functions = ["coherence_swarm","plv_swarm","regional_analysis",...
     "power_spectrum_features","power_spectrum_asymmetry","bspec_swarm","cross_bspec_swarm","pac_swarm"];

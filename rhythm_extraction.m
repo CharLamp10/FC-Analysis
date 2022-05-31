@@ -1,29 +1,31 @@
-%Thesis Project: Classification and Characterization of the Effect of Migraine 
-%through Functional Connectivity Characteristics: Application to EEG 
-%Recordings from a Multimorbid Clinical Sample
+%% Thesis - Charalampos Lamprou 9114 & Ioannis Ziogas 9132 - AUTh ECE
+% Thesis Project: Classification and Characterization of the Effect of Migraine 
+% through Functional Connectivity Characteristics: Application to EEG 
+% Recordings from a Multimorbid Clinical Sample
 
 function [rhythms,new_Fs] = rhythm_extraction(data,Fs,chan_names, rhythm_lims, which_rhythms, SwD_par)
-%RHYTHM_EXTRACTION - Takes as input data in matrix format(channels X points)
-%   then applies SwD. Then the residual is discarded from each channel, and 
-%   and components are stored in struct according to which channel they
-%   belong to. For each component the PSD is computed and normalised, and 
-%   the power percentage of each rhythm is calculated. Then each component
-%   is classified to a band and finally a struct with the rhythms of every 
-%   channel is returned.
+% RHYTHM_EXTRACTION - Takes as input data in matrix format(channels X points)
+% then applies SwD. Then the residual is discarded from each channel, and 
+% and components are stored in struct according to which channel they
+% belong to. For each component the PSD is computed and normalised, and 
+% the power percentage of each rhythm is calculated. Then each component
+% is classified to a band and finally a struct with the rhythms of every 
+% channel is returned.
 %   
-%%   Inputs:  
-%            data - MxN matrix (M channels, N data length)
-%            Fs   - sampling rate
-%            chan_names - list of strings with channel labels
-%            rhythm_lims - struct array, each field contains frequency domain limits for
-%                          each rhythm provided
-%            which_rhythms - string array, contains names of rhythms to be
-%                            returned
+%% Inputs:  
+% data            -double matrix. MxN matrix (M channels, N data length)
+% Fs              -double. Sampling rate
+% chan_names      -string array. List of strings with channel labels
+% rhythm_lims     -struct array, each field contains frequency domain limits for
+%                  each rhythm provided
+% which_rhythms   -string array, contains names of rhythms to be
+%                  returned
 %
-%%   Outputs: 
-%            rhythms - struct of structs
-%                       Each struct contains the channels rhythms
-%            new_Fs  - new sampling rate
+%% Outputs: 
+% rhythms          -struct of structs
+% Each struct contains the channels rhythms
+% 
+% new_Fs  - new sampling rate
 %
 %   Examples of rhythm frequency limits:
 %     delta = [1 4]; theta = [4 8]; alpha = [8 13]; lbeta = [13 18];

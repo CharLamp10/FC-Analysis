@@ -1,7 +1,18 @@
+%% Thesis - Charalampos Lamprou 9114 & Ioannis Ziogas 9132 - AUTh ECE
+% Thesis Project: Classification and Characterization of the Effect of Migraine 
+% through Functional Connectivity Characteristics: Application to EEG 
+% Recordings from a Multimorbid Clinical Sample
+
 function [r,r_CI,nCtlPts] = GLM_CFC(phi,amp,flag_AIC,flag_plot,flag_ci)
+% This function computes the GLM between a phase and an amplitude signal.
+% For more information about this function check doi: 10.1016/j.jneumeth.2013.08.006
 
-%Compute AIC to determine number of control points
+%-----------------------------------------------------------------------------------------------------------------
+% Authors: Ioannis Ziogas & Charalampos Lamprou
+% Copyright (C) 2022 Ioannis Ziogas and Charalampos Lamprou,SPBTU,ECE,AUTh
+%-----------------------------------------------------------------------------------------------------------------
 
+% Compute AIC to determine number of control points
 Y = amp;
 CtlPts = (4:1:30);
 if ischar(flag_AIC) || isstring(flag_AIC)

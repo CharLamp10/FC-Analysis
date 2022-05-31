@@ -1,4 +1,11 @@
+%% Thesis - Charalampos Lamprou 9114 & Ioannis Ziogas 9132 - AUTh ECE
+% Thesis Project: Classification and Characterization of the Effect of Migraine 
+% through Functional Connectivity Characteristics: Application to EEG 
+% Recordings from a Multimorbid Clinical Sample
+
 function [ant_bic,waxis] = bicoherx_temp (w,x,y,  nfft, wind, nsamp, overlap)
+% This function has been modified to calculate the anti-symmetric
+% bicoherence
 %BICOHERX - Direct (FD) method for estimating cross-bicoherence
 %	[bic,waxis] = bicoherx (w,x,y,  nfft, wind, segsamp, overlap)
 %	w,x,y - data vector or time-series

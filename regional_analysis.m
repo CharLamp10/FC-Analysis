@@ -1,57 +1,41 @@
 %% Thesis - Charalampos Lamprou 9114 & Ioannis Ziogas 9132 - AUTh ECE
+% Thesis Project: Classification and Characterization of the Effect of Migraine 
+% through Functional Connectivity Characteristics: Application to EEG 
+% Recordings from a Multimorbid Clinical Sample
 
 function [regional_feat] = regional_analysis(func_name,param_struct)
 
 % Calculates regional connectivity measures among several region choices: a)
-% inter-regional coherence, b) intra-regional coherence, c)left-right
-% hemisphere coherence, d) anti-symmetric coherence (only anti-lateral
-% coherence)
+% inter-regional, b) intra-regional, c)left-right
+% hemisphere, d) anti-symmetric (only anti-lateral)
 % 
-% Inputs: func_name     - name of the wanted feature function
-%                       (available atm are:"coher_swarm_calc",
-%                       "plv_swarm_calc","bspec_swarm_calc","cross_bspec_calc","pac_swarm_calc"
-%         param_struct  - struct that contains all necessary input arguments.
-%               These can be:
-%                       regional  - string specifying regional analysis type:
-%                           "inter-regional","intra-regional","left-right"
-%                       sumup     - binary flag, to sum or not to sum electrodes in inter and left-right
-%                       rhythms_struct   - struct of eeg data
-%                       chans     - string specifying desired channels:
-%                                        can be "all" or specific channels
-%                       Fs        - sampling rate
-%                       bands     - vector containing start and end of 
-%                                           non-conventional bands
-%                       new_length - duration of eeg in min
-%                       wind_dur  - duration of windows in seconds
-%                       /////////////////////////////////////////
-%                       For surrogate calculation, depending on feature
-%                       measured: 
-%                                 1. Coherence
-%                                  window - window for mscohere calculation
-%                                  overlap - overlap for mscohere
-%                                  method - surrogate data threshold calculation method,
-%                                           available choices are:
-%                                           "Koopmans","permutation","constant"
-%                                  alpha  - 1 - confidence for "Koopmans" method
-%                                 2. Phase Locking Value
-%                                  method - surrogate threshold calculation
-%                                       method, choose from: "block-resampling"
-%                                       and "permutation"
-%                                  alpha  - 1 - confidence 
-%                                  N      - number of surrogate samples
-%                                  blocksize - argument for
-%                                  "block-resampling method"
-%                                 3. Bispectrum & Bicoherence
+%% Inputs:      
+% func_name        -string. Name of the wanted feature function available 
+%                   atm are:"coher_swarm_calc", "plv_swarm_calc",
+%                   "cross_bspec_calc","pac_swarm_calc"
+% param_struct     -struct. contains all necessary input arguments.
+% These can be:
+% regional         -string specifying regional analysis type:
+%                   "inter-regional","intra-regional","left-right"
+% rhythms_struct   -struct of eeg data
+% chans            -string specifying desired channels:
+%                   can be "all" or specific channels
+% Fs               -double. sampling rate
+% bands            -vector. contains start and end of non-conventional bands
+% new_length       -double.duration of eeg in min
+% wind_dur         -double.duration of windows in seconds
+% num_wind         -double.The number of windows
+% 
+% surrogate parameters. Information about them can be found at
+% ConnectivityAnalysis.m
+%% Outputs: 
+% regional_feat:   -struct containing calculated feature
+%                   for all regional combinations for each window 
 %
-%                                 4. Anti-Symmetric Cross Bispectrum OR
-%                                 Cross Bispectrum and Cross Bicoherence
-%
-%                                 5. Phase-Amplitude Coupling
-
-% Outputs: regional_feat          - structure containing calculated feature
-%                                   for all regional combinations for each window 
-%
-%% Written by: Ioannis Ziogas && Charalampos Lamprou, August 2021
+%-----------------------------------------------------------------------------------------------------------------
+% Authors: Ioannis Ziogas & Charalampos Lamprou
+% Copyright (C) 2022 Ioannis Ziogas and Charalampos Lamprou,SPBTU,ECE,AUTh
+%-----------------------------------------------------------------------------------------------------------------
 
 %% Initializations
 chan_names = param_struct.chan_names;

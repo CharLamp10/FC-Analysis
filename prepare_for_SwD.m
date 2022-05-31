@@ -1,19 +1,24 @@
-%Thesis Project: Classification and Characterization of the Effect of Migraine 
-%through Functional Connectivity Characteristics: Application to EEG 
-%Recordings from a Multimorbid Clinical Sample
+%% Thesis - Charalampos Lamprou 9114 & Ioannis Ziogas 9132 - AUTh ECE
+% Thesis Project: Classification and Characterization of the Effect of Migraine 
+% through Functional Connectivity Characteristics: Application to EEG 
+% Recordings from a Multimorbid Clinical Sample
 
 function [SwD_all,chanlocs,chan_ind,new_Fs] = prepare_for_SwD(data,SwD_par,chan_names,Fs,flag)
-%2nd Version of SwD - More Time Efficient
+% Application of Swarm Decomposition
 %% Inputs:  
-%          data - MxN matrix (M channels, N data length)
-%          chan_names - list of strings with channel labels
-%          Fs   - sampling rate
-%          flag - 1 to return plots, 0 elsewise
+% data          -MxN matrix (M channels, N data length)
+% SwD_par       -struct. Contains info about the SwD algorithm. Information
+%                about these parapeters can be found bellow.    
+% chan_names    -list of strings with channel labels
+% Fs            -double. Sampling rate
+% flag          -1 to return plots, 0 elsewise
 % 
 %% Outputs:
-%          SwD_all - swarm decomposed components of input matrix
-%          chanlocs - matrix, indexed channel labels according to number of components detected in each channel
-%          new_Fs  -  new sampling rate 
+% SwD_all       -double matrix. Swarm decomposed components of input matrix
+% chanlocs      -matrix. indexed channel labels according to number of 
+%                components detected in each channel
+% chan_ind      -double array.
+% new_Fs        -double. New sampling rate 
 %-----------------------------------------------------------------------------------------------------------------
 % Authors: Ioannis Ziogas & Charalampos Lamprou
 % Copyright (C) 2022 Ioannis Ziogas and Charalampos Lamprou,SPBTU,ECE,AUTh

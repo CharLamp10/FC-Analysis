@@ -1,21 +1,26 @@
+%% Thesis - Charalampos Lamprou 9114 & Ioannis Ziogas 9132 - AUTh ECE
+% Thesis Project: Classification and Characterization of the Effect of Migraine 
+% through Functional Connectivity Characteristics: Application to EEG 
+% Recordings from a Multimorbid Clinical Sample
+
 function [mean_PLV, names] = plv_swarm_calc(param_struct)
 
 % Calculates the phase locking value between SwDs of different electrodes
-% when both of them belong to the same rhythm.
-% Inputs: elec_case    - string specifying method used: can be "single" for
-%                        electrode to electrode coherence, or any of the regional options
-%                        specified in regional_analysis.m for region to region coherence
-%         x            - data of the one electrode (struct)
-%         y            - data of the other electrode (struct)
-%         surr_struct  - struct containing  parameters for
-%                        surrogate method used for determining significance threshold in
-%                        coherence calculation: method and method parameters
-%         For more details, see regional_analysis.m
+% for various bands.
+%% Inputs: 
+% param_struct  -struct containing  parameters for the calculation:
+%                method and surrogate parameters
+% For more details, see ConnectivityAnalysis.m
 
-% Outputs: mean_plv - mean of plv at each band and pair of electrodes
-%                           across windows
-%          std_plv  - std of plv at each band and pair of electrodes
-%                           across windows
+%% Outputs: 
+% mean_plv       -double array. Mean of plv at each band and pair of electrodes
+%                 across the given regions 
+% names          -string array. Contains the name of each feature in
+%                 mean_plv
+%-----------------------------------------------------------------------------------------------------------------
+% Authors: Ioannis Ziogas & Charalampos Lamprou
+% Copyright (C) 2022 Ioannis Ziogas and Charalampos Lamprou,SPBTU,ECE,AUTh
+%-----------------------------------------------------------------------------------------------------------------
 
 plvThresh = param_struct.plvThresh;
 
@@ -56,17 +61,17 @@ if ~strcmp(electrodesx{1,1}, "NoChannels") && ~strcmp(electrodesy{1,1}, "NoChann
                             for lx = 1:lenx
                                 for ly = 1:leny
                                     if ~exist('mPLV','var')
-                                        [mPLV.(join(["mPLV_",rhythms{r},'_',rhythms{l}],'')),~] ...    
+                                        mPLV.(join(["mPLV_",rhythms{r},'_',rhythms{l}],'')) ...    
                                             = PLV_calc(xxx(:,lx),yyy(:,ly),param_struct); % calculate PLV                                 
                                     elseif exist('mPLV','var') && isfield(mPLV,join(["mPLV_",rhythms{r},'_',rhythms{l}],''))
-                                        [mPLV.(join(["mPLV_",rhythms{r},'_',rhythms{l}],''))(end+1), ~] ...
+                                        mPLV.(join(["mPLV_",rhythms{r},'_',rhythms{l}],''))(end+1) ...
                                             = PLV_calc(xxx(:,lx),yyy(:,ly),param_struct); % calculate PLV
                                     elseif exist('mPLV','var') && ~isfield(mPLV,join(["mPLV_",rhythms{r},'_',rhythms{l}],''))...
                                             && isfield(mPLV,join(["mPLV_",rhythms{l},'_',rhythms{r}],''))
-                                        [mPLV.(join(["mPLV_",rhythms{l},'_',rhythms{r}],''))(end+1),~] ...    
+                                        mPLV.(join(["mPLV_",rhythms{l},'_',rhythms{r}],''))(end+1) ...    
                                             = PLV_calc(xxx(:,lx),yyy(:,ly),param_struct); % calculate PLV
                                     else
-                                        [mPLV.(join(["mPLV_",rhythms{r},'_',rhythms{l}],'')), ~] ...    
+                                        mPLV.(join(["mPLV_",rhythms{r},'_',rhythms{l}],'')) ...    
                                             = PLV_calc(xxx(:,lx),yyy(:,ly),param_struct); % calculate PLV
                                     end  
                                 end

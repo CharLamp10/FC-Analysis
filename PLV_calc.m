@@ -1,4 +1,9 @@
-function [plv_mean,plv_std] = PLV_calc(x, y, surr_struct)
+%% Thesis - Charalampos Lamprou 9114 & Ioannis Ziogas 9132 - AUTh ECE
+% Thesis Project: Classification and Characterization of the Effect of Migraine 
+% through Functional Connectivity Characteristics: Application to EEG 
+% Recordings from a Multimorbid Clinical Sample
+
+function plv_mean = PLV_calc(x, y, surr_struct)
 % Compute the Phase Locking Value between two signals across trials, according to Lachaux, 
 % Rodriguez, Martinerie, and Varela (1999). The PLV value ranges from 0, indicating random 
 % phase differences, to 1 indicating a fixed phase difference. 
@@ -8,8 +13,19 @@ function [plv_mean,plv_std] = PLV_calc(x, y, surr_struct)
 % phase_sig = angle(hilbert(BPS)); 
 % Where BPS is the signal after band-pass filtering around the frequency range of interest. 
 % 
-% Written by Edden Gerber 2012
-% compute PLV
+%% Inputs:
+% x             -double array. Signal
+% y             -double array. Signal
+% surr_struct   -struct. Contains info about the surrogate method. For more
+%                info check ConnectivityAnalysis.m
+%% Outputs:
+% plv_mean      -double. The plv value between x and y.
+% 
+%-----------------------------------------------------------------------------------------------------------------
+% Authors: Ioannis Ziogas & Charalampos Lamprou
+% Copyright (C) 2022 Ioannis Ziogas and Charalampos Lamprou,SPBTU,ECE,AUTh
+%-----------------------------------------------------------------------------------------------------------------
+
 phase_x = angle(hilbert(x));
 phase_y = angle(hilbert(y));
 e = exp(1i*(phase_x - phase_y));
@@ -27,10 +43,8 @@ if method == "permutation"
     end
     plv_thres = prctile(plv_surr,(1-alpha)*100);
     plv_mean = abs(mean(e));
-    plv_std = abs(std(e));
     if plv_mean < plv_thres
         plv_mean = 0;
-        plv_std = 0;
     end
 elseif method == "block-resampling"
      blocksize = surr_struct.blocksize; % enter requred block size
@@ -50,13 +64,10 @@ elseif method == "block-resampling"
      end
     plv_thres = prctile(plv_surr,(1-alpha)*100);
     plv_mean = abs(mean(e));
-    plv_std = abs(std(e));
     if plv_mean < plv_thres
         plv_mean = 0;
-        plv_std = 0;
     end
 elseif method == "noSurrogate"
     
     plv_mean = abs(mean(e));
-    plv_std = abs(std(e));
 end

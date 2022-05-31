@@ -1,4 +1,7 @@
-%% Thesis - Ioannis Ziogas 9132 & Charalampos Lamprou 9114- AUTh ECE
+%% Thesis - Charalampos Lamprou 9114 & Ioannis Ziogas 9132 - AUTh ECE
+% Thesis Project: Classification and Characterization of the Effect of Migraine 
+% through Functional Connectivity Characteristics: Application to EEG 
+% Recordings from a Multimorbid Clinical Sample
 
 function pac = calc_pac(param_struct)
 % This function computes the phase amplitude coupling, given a Phase and an
@@ -7,8 +10,18 @@ function pac = calc_pac(param_struct)
 % MVL, MI and GLM measures are available. 
 % NoSurrogate, Constant Thresholding, Block-Swapping and Block-Resampling
 % methods are available to test statistical significance.
+%
+%% Inputs:
+% param_struct   -struct. Contains info about pac calculation. For more 
+%                 info check ConnectivityAnalysis.m
+%% Outputs:
+% pac            -double. The calculated pac value
 
-%% Written by: Charalampos Lamprou && Ioannis Ziogas, December 2021
+%-----------------------------------------------------------------------------------------------------------------
+% Authors: Ioannis Ziogas & Charalampos Lamprou
+% Copyright (C) 2022 Ioannis Ziogas and Charalampos Lamprou,SPBTU,ECE,AUTh
+%-----------------------------------------------------------------------------------------------------------------
+
 
 Phase = param_struct.Phase;
 Amp = param_struct.Amp;

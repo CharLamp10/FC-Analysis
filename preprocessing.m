@@ -1,6 +1,7 @@
-%Thesis Project: Classification and Characterization of the Effect of Migraine 
-%through Functional Connectivity Characteristics: Application to EEG 
-%Recordings from a Multimorbid Clinical Sample
+%% Thesis - Charalampos Lamprou 9114 & Ioannis Ziogas 9132 - AUTh ECE
+% Thesis Project: Classification and Characterization of the Effect of Migraine 
+% through Functional Connectivity Characteristics: Application to EEG 
+% Recordings from a Multimorbid Clinical Sample
 
 function return_struct = preprocessing(choice_struct)
 

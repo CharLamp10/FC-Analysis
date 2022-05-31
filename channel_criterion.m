@@ -1,6 +1,7 @@
-%Thesis Project: Classification and Characterization of the Effect of Migraine 
-%through Functional Connectivity Characteristics: Application to EEG 
-%Recordings from a Multimorbid Clinical Sample
+%% Thesis - Charalampos Lamprou 9114 & Ioannis Ziogas 9132 - AUTh ECE
+% Thesis Project: Classification and Characterization of the Effect of Migraine 
+% through Functional Connectivity Characteristics: Application to EEG 
+% Recordings from a Multimorbid Clinical Sample
 
 function [decision,channel_activity_per,activity_thresh] = channel_criterion(exists,chan_name,wanted_dur,win_length,activity_thresh)
 %Channel Criterion for evaluating channels of a rhythm based on activity

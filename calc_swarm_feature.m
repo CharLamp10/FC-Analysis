@@ -1,8 +1,12 @@
 %% Thesis - Charalampos Lamprou 9114 & Ioannis Ziogas 9132 - AUTh ECE
+% Thesis Project: Classification and Characterization of the Effect of Migraine 
+% through Functional Connectivity Characteristics: Application to EEG 
+% Recordings from a Multimorbid Clinical Sample
 
 function [varargout] = calc_swarm_feature(func_name,varargin)
-%%Calls function of a swarm feature and returns flattened outputs
-% Inputs: func_name - string, name of function
+% Calls function of a swarm feature and returns flattened outputs
+%% Inputs: 
+%         func_name - string, name of function
 %         varargin  - arguments required by the function called
 %
 % Commonly used arguments: segmented_eeg - struct of segmented eeg data
@@ -15,8 +19,15 @@ function [varargout] = calc_swarm_feature(func_name,varargin)
 %                                   SwD belongs to a band.
 %                          new_length - new eeg time length after segmenting ( in minutes )
 %                          wind_dur - duration of windows
+%                          num_wind - number of windows
 %
-% Outputs: varargout - Cell array, contains outputs of called function 
+%% Outputs: 
+% varargout - Cell array, contains outputs of called function 
+%-----------------------------------------------------------------------------------------------------------------
+% Authors: Ioannis Ziogas & Charalampos Lamprou
+% Copyright (C) 2022 Ioannis Ziogas and Charalampos Lamprou,SPBTU,ECE,AUTh
+%-----------------------------------------------------------------------------------------------------------------
+
     
     if length(varargin) == 1
         varargin = varargin{1,1};

@@ -1,7 +1,22 @@
+%% Thesis - Charalampos Lamprou 9114 & Ioannis Ziogas 9132 - AUTh ECE
+% Thesis Project: Classification and Characterization of the Effect of Migraine 
+% through Functional Connectivity Characteristics: Application to EEG 
+% Recordings from a Multimorbid Clinical Sample
 function [tfd]=rid_rihaczek4(x,fbins)
-% This function computes reduced interference Rihaczek distribution;
-% Input: x: signal, fbins=required frequency bins
-% Output: tfd = Generated reduced interference Rihaczek distribution
+% This function computes reduced interference Rihaczek distribution. This
+% script was taken by the original scripts provided by the authors of
+% https://doi.org/10.1038/s41598-019-48870-2
+
+%% Inputs: 
+% x:      -double array. Signal
+% fbins:  -double. Required frequency bins
+%% Outputs: 
+% tfd     -double array. Generated reduced interference Rihaczek distribution
+
+%-----------------------------------------------------------------------------------------------------------------
+% Authors: Ioannis Ziogas & Charalampos Lamprou
+% Copyright (C) 2022 Ioannis Ziogas and Charalampos Lamprou,SPBTU,ECE,AUTh
+%-----------------------------------------------------------------------------------------------------------------
 
 tbins = length(x);
 amb = zeros(tbins);

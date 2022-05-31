@@ -1,8 +1,14 @@
+%% Thesis - Charalampos Lamprou 9114 & Ioannis Ziogas 9132 - AUTh ECE
+% Thesis Project: Classification and Characterization of the Effect of Migraine 
+% through Functional Connectivity Characteristics: Application to EEG 
+% Recordings from a Multimorbid Clinical Sample
+
 function feature = ConnectivityAnalysis(data, param_struct)
 
 % In this function Functional Connectivity featres are calculated
 % 
-% Inputs:      data            -struct or char.
+%% Inputs:
+%              data            -struct or char.
 %              param_struct    -struct containing the following info
 % Info:
 %              feature_name    -string. "coher" or "plv" or "cross_bspec"
@@ -183,6 +189,8 @@ function feature = ConnectivityAnalysis(data, param_struct)
 %              high            -cell of chars. The bands that will be
 %                               considered as high for the envelope extraction
 %                               e.g {'hi_beta','hi_gamma'}
+%% Outputs:
+% feature    -Double matrix. The calculated feature matrix.
 
 
 if ischar(data)

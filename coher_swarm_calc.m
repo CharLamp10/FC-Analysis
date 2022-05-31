@@ -1,23 +1,29 @@
+%% Thesis - Charalampos Lamprou 9114 & Ioannis Ziogas 9132 - AUTh ECE
+% Thesis Project: Classification and Characterization of the Effect of Migraine 
+% through Functional Connectivity Characteristics: Application to EEG 
+% Recordings from a Multimorbid Clinical Sample
+
 function [mean_coher, names] = coher_swarm_calc(param_struct)
 
 % Calculates the coherence between SwDs of different electrodes when
-% both of them belong to the same non - conventional band.
+% both of them belong to the same band.
 %
-% Inputs: elec_case    - string specifying method used: can be "single" for
-%                        electrode to electrode coherence, or any of the regional options
-%                        specified in regional_analysis.m for region to region coherence
-%         x            - data of the one electrode (struct)
-%         y            - data of the other electrode (struct)
-%         bands        - non-conventional bands of interest
-%         Fs           - sampling rate
-%         surr_struct  - struct containing various parameters 
-%  For more details, see regional_analysis.m
+%% Inputs: 
+% param_struct  -struct containing  parameters for the calculation:
+%                method and surrogate parameters
+% For more details, see ConnectivityAnalysis.m
 
 
-% Outputs: mean_coher - mean of coherence at each band and pair of electrodes
-%                       across windows
-%          std_coher  - std of coherence at each band and pair of electrodes
-%                       across windows
+%% Outputs: 
+% mean_feat     -double array. The mean value of each calculated feature
+%                across the given regions 
+% names         -string array. Contains the name of each feature in
+%                mean_feat  
+%-----------------------------------------------------------------------------------------------------------------
+% Authors: Ioannis Ziogas & Charalampos Lamprou
+% Copyright (C) 2022 Ioannis Ziogas and Charalampos Lamprou,SPBTU,ECE,AUTh
+%-----------------------------------------------------------------------------------------------------------------
+
 
 %Collect signals from input struct and sum all components of each electrode
 x = param_struct.a;

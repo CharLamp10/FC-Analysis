@@ -1,4 +1,7 @@
-%% Thesis - Ioannis Ziogas 9132 & Charalampos Lamprou 9114- AUTh ECE
+%% Thesis - Charalampos Lamprou 9114 & Ioannis Ziogas 9132 - AUTh ECE
+% Thesis Project: Classification and Characterization of the Effect of Migraine 
+% through Functional Connectivity Characteristics: Application to EEG 
+% Recordings from a Multimorbid Clinical Sample
 
 function [hil_PAC_all,tf_PAC] = hil_PAC_surr(param_struct)
 % This function employs existing TF-MVL method for PAC calculation 
@@ -7,7 +10,11 @@ function [hil_PAC_all,tf_PAC] = hil_PAC_surr(param_struct)
 % Three different PAC measures are available: Mean Vector Length (MVL), 
 % Modulation Index (MI) and General Linear Model (GLM).
 
-%% Written by: Ioannis Ziogas && Charalampos Lamprou, December 2021
+%-----------------------------------------------------------------------------------------------------------------
+% Authors: Ioannis Ziogas & Charalampos Lamprou
+% Copyright (C) 2022 Ioannis Ziogas and Charalampos Lamprou,SPBTU,ECE,AUTh
+%-----------------------------------------------------------------------------------------------------------------
+
 
 [hil_PAC_all,hil_surr_PAC] = hilPAC_surrogate(param_struct);
 

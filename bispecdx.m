@@ -1,3 +1,8 @@
+%% Thesis - Charalampos Lamprou 9114 & Ioannis Ziogas 9132 - AUTh ECE
+% Thesis Project: Classification and Characterization of the Effect of Migraine 
+% through Functional Connectivity Characteristics: Application to EEG 
+% Recordings from a Multimorbid Clinical Sample
+
 function [Bspec,waxis] = ...
     bispecdx (x, y, z, nfft, wind, nsamp, overlap,plotflag)
 %BISPECDX Cross-Bispectrum estimation using the direct (fft-based) approach.

@@ -1,7 +1,25 @@
+%% Thesis - Charalampos Lamprou 9114 & Ioannis Ziogas 9132 - AUTh ECE
+% Thesis Project: Classification and Characterization of the Effect of Migraine 
+% through Functional Connectivity Characteristics: Application to EEG 
+% Recordings from a Multimorbid Clinical Sample
+
 function coher = COH_calc(x,y,Fs,surr_struct)
 %Calculate coherence with Welch method and find significance threshold
 %using a surrogate data method. Available methods: a) random permutation,
 % b) Koopmans method, c) constant threshold
+%
+%% Inputs:
+% x             -double array. Signal
+% y             -double array. Signal
+% Fs            -double. Sampling rate
+% surr_struct   -struct. Contains info about the statistical significance
+%                method. For more info check ConnectivityAnalysis.m
+%% Outputs:
+% coher         -double array. The calculated coherence value.
+%-----------------------------------------------------------------------------------------------------------------
+% Authors: Ioannis Ziogas & Charalampos Lamprou
+% Copyright (C) 2022 Ioannis Ziogas and Charalampos Lamprou,SPBTU,ECE,AUTh
+%-----------------------------------------------------------------------------------------------------------------
 
 surr_method = surr_struct.st_sig_method;
 f = surr_struct.f;

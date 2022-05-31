@@ -1,6 +1,9 @@
-%Advanced DSP Project
-%Effect of Deep Brain Stimulation on Parkinsonian Tremor
+%% Thesis - Charalampos Lamprou 9114 & Ioannis Ziogas 9132 - AUTh ECE
+% Thesis Project: Classification and Characterization of the Effect of Migraine 
+% through Functional Connectivity Characteristics: Application to EEG 
+% Recordings from a Multimorbid Clinical Sample
 
+function Peaks = findPeaks(xcoord, ycoord, mat)
 % Algorithm that finds Bispectral Area Peaks. The process is initialized
 % by setting as starting point the leftmost element in the coord matrix.
 % Then all neighboring elements of the startPoint are checked. If
@@ -9,7 +12,18 @@
 % neighbours with magnitude greater than the startPoint's are found, then
 % the neighbour with the max magnitude survives and becomes the startPoint
 % while the others are deleted. 
-function Peaks = findPeaks(xcoord, ycoord, Bispec)
+% 
+%% Inputs:
+% xcoord      -double array. Contains the x coordinates of the possible
+%              peaks 
+% ycoord      -double array. Contains the y coordinates of the possible
+%              peaks
+% mat         -double matrix.
+%-----------------------------------------------------------------------------------------------------------------
+% Authors: Ioannis Ziogas & Charalampos Lamprou
+% Copyright (C) 2022 Ioannis Ziogas and Charalampos Lamprou,SPBTU,ECE,AUTh
+%-----------------------------------------------------------------------------------------------------------------
+
 
 [r,c] = size(xcoord);
 if r > c
@@ -64,16 +78,16 @@ while n>=1
         oldNei = unique(oldNei','rows')';
         %%%
         if isempty(Nei) == 0
-            NeiBispec = zeros(1,length(Nei(1,:)));
+            Neimat = zeros(1,length(Nei(1,:)));
             for i = 1:length(Nei(1,:))
-                 NeiBispec(:,i) = Bispec(Nei(1,i),Nei(2,i)); %Finding z values in Bispec for each Nei 
+                 Neimat(:,i) = mat(Nei(1,i),Nei(2,i)); %Finding z values in Bispec for each Nei 
             end
             %%%Finds max Nei and compares it to z value of startPoint
             %%%If maxNei>startPoint, maxNei is new startPoint and
             %%%startPoint becomes the 1st element
-            if max(NeiBispec) > Bispec(startPoint(1),startPoint(2)) + 10^(-7)
+            if max(Neimat) > mat(startPoint(1),startPoint(2)) + 10^(-7)
                 oldNei = [oldNei startPoint];
-                [~,s] = max(NeiBispec);
+                [~,s] = max(Neimat);
                 startPoint = Nei(:,s);
                 coord(:,1) = startPoint;
             else
@@ -110,14 +124,14 @@ while n>=1
         end
         Nei(:,all(Nei == 0 )) = []; %Because Nei is initialized with 0's
         if isempty(Nei) == 0
-            NeiBispec = zeros(1,length(Nei(1,:)));
+            Neimat = zeros(1,length(Nei(1,:)));
             for i = 1:length(Nei(1,:))
-                 NeiBispec(:,i) = Bispec(Nei(1,i),Nei(2,i)); %Finding z values in Bispec for each Nei 
+                 Neimat(:,i) = mat(Nei(1,i),Nei(2,i)); %Finding z values in Bispec for each Nei 
             end
             %%%Finds max Nei and compares it to z value of startPoint
             %%%If maxNei>startPoint, maxNei is new startPoint and
             %%%startPoint becomes the 1st element
-            if max(NeiBispec) <= Bispec(startPoint(1),startPoint(2))
+            if max(Neimat) <= mat(startPoint(1),startPoint(2))
                 Peaks(:,k) = startPoint;
                 k = k+1;
             end
